@@ -16,10 +16,11 @@ for s in wb.sheets():
         values = []
         for col in range(s.ncols):
             values.append(s.cell(row, col).value)
-        x_data.append(values[1])  # first col
-        y_data.append(values[2])  # second col
-        fre.append(values[3])
-        specialFre.append(values[4])
+        x_data.append(values[1])  # x coordinate of observation points
+        y_data.append(values[2])  # y coordinate of observation points 
+        fre.append(values[3]) # number of walkers passed the observation points 
+        specialFre.append(values[4]) # average value of number of walkers passsed the observation points 
+# copy the text generated from calculate_function.py
 A2X = 30.07
 A2Y = 23.44
 O1X = 7.24
@@ -170,7 +171,7 @@ V=1
 x_set=[]
 y_set=[]
 
-
+# the following function uses to plot points on some lines with a slope, which doesn't equal to zero
 def calculateLine(AX,AY,BX,BY):
     K=(BY-AY)/(BX-AX)
     x_Line_point=random.uniform(AX,BX)
@@ -184,22 +185,23 @@ def calculateLine(AX,AY,BX,BY):
 # Find four points or three points nearby. They are B13 B15 O2 C3
 
 Account=0
-while Account<B14A/V: # here need a change
+while Account<B14A/V: # number 'V' controls the total number of points plotted in the graph
     a = random.uniform(0, 10)
+    # the random number 'a' enables us to plot random points evenly in southern-northern direction and eastern-western direction
     if a >= 5:
-        Value_x = random.uniform(B15X, B13X) # here need a change
-        Value_y = B15Y # here need a change
+        Value_x = random.uniform(B15X, B13X) # random x coordinate
+        Value_y = B15Y # fixed y coordinate because B15Y=B13Y
         x_set.append(Value_x)
         y_set.append(Value_y)
         Account=Account+1
     if a <= 5:
-        Value_x = C3X # here need a change
-        Value_y = random.uniform(C3Y, O2Y) # here need a change
+        Value_x = C3X # fixed y coordinate because C3X=O2X
+        Value_y = random.uniform(C3Y, O2Y) # random y coordiante
         x_set.append(Value_x)
         y_set.append(Value_y)
         Account = Account + 1
 # B4
-# Find the point nearby C5 A1 B5
+# Find the point nearby . They are C5 A1 B5
 
 Account=0
 while Account<B4A/V: # here need a change
@@ -716,10 +718,10 @@ while Account<C11A/V: # here need a change
 
 
 plt.figure(figsize=(10, 8))
-plt.plot(x_data, y_data, ".", color='black', alpha=0.45, ms='10')
+plt.plot(x_data, y_data, ".", color='black', alpha=0.45, ms='10')# plot observation points
 gate_x=[30.07,-27.25,-27.37,30.5,1.78]
 gate_y=[23.44,18.66,-12.7,-13.13,-23.5]
-plt.plot(gate_x,gate_y,".",color="green",ms=12)
+plt.plot(gate_x,gate_y,".",color="green",ms=12)#plot the position of gates
 plt.plot(x_set,y_set,"x",color="purple",alpha=0.75,ms=1)
 plt.title("Distribution of walkers in roads")
 plt.xlabel("Distance in eastern-western direction  /10m")
