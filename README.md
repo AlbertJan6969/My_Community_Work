@@ -14,3 +14,4 @@ A simplified map of the park in my community: map.PNG
 original traffic volume data in the park: data.xlsx
 first approach: V1.py ,corresponding diagrams: F0.png F1.png F2.png F3.png F4.png
 Second approach: V2.py, corresponding diagrams: Figure_1.png, Figure_2.png 
+calculate_function.py is used to print values of variables to write in V2.py
