@@ -16,19 +16,20 @@ for s in wb.sheets():
         values = []
         for col in range(s.ncols):
             values.append(s.cell(row, col).value)
-        name.append(values[0])
-        x_data.append(values[1])
-        y_data.append(values[2])
-        specialFre.append(values[4])
+        name.append(values[0]) # add names to the list
+        x_data.append(values[1]) # add x coordiante
+        y_data.append(values[2]) # add y coordiante
+        specialFre.append(values[4]) # add observational data
 
 for q in range (0,48):
     NAME=name[q]
+    # combining new names
     XNAME=NAME+"X"
     YNAME = NAME + "Y"
-    XNAMEd=x_data[q]
-    YNAMEd=y_data[q]
+    XNAMEd=x_data[q] # value of x coordiante
+    YNAMEd=y_data[q] # value of y coordiante
     ANAME=NAME+"A"
-    print(ANAME,"=",specialFre[q])
+    print(ANAME,"=",specialFre[q]) # value of frequency 
     # print(XNAME,"=",XNAMEd)
     # print(YNAME,"=",YNAMEd)
 
